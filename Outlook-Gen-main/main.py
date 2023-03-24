@@ -50,9 +50,9 @@ class Outlook:
             "accept"          : "*/*",
             "accept-encoding" : "gzip, deflate, br",
             "connection"      : "keep-alive",
-            "X-Forwarded-For"   : this.ips[this.nextIP],
             "user-agent"      : this.userAgent
         })
+        #"X-Forwarded-For"   : this.ips[this.nextIP],
         
         this.Key, this.randomNum, this.SKI = findall(r'Key="(.*?)"; var randomNum="(.*?)"; var SKI="(.*?)"', content.text)[0]
         json_data = loads(findall(r't0=([\s\S]*)w\["\$Config"]=', content.text)[0].replace(';', ''))
@@ -148,9 +148,9 @@ class Outlook:
             "user-agent"        : this.userAgent,
             "x-ms-apitransport" : "xhr",
             "x-ms-apiversion"   : "2",
-            "X-Forwarded-For"   : this.ips[this.nextIP],
             "referrer"          : "https://signup.live.com/?lic=1"
         }
+        #            "X-Forwarded-For"   : this.ips[this.nextIP],
     
     def __base_payload(this, captcha_solved: bool) -> dict:
         payload = {
